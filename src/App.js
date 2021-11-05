@@ -11,6 +11,7 @@ const DUMMY = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY);
+  const [isAddNew, setIsAddNew] = useState(1);
 
   const addExpenseHandler = (expense) => {
     console.log('in App');
@@ -22,10 +23,14 @@ const App = () => {
     })
   }
 
+  const clickNewExpenseHandler = (clickButton) => {
+    setIsAddNew(clickButton);
+  }
+
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense addNew={isAddNew} onAddExpense={addExpenseHandler} onClickNewExpense={clickNewExpenseHandler}/>
       <Expenses items={expenses}/>
     </div>
   );
